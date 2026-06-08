@@ -2,7 +2,14 @@ import chromadb
 from sentence_transformers import SentenceTransformer
 from ingest import process_documents
 
+# Load model once at module level
+_model = None
 
+def get_model():
+    global _model
+    if _model is None:
+        _model = SentenceTransformer("all-MiniLM-L6-v2")
+    return _model
 def embed_and_store():
     chunks = process_documents()
     model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -26,7 +33,7 @@ def embed_and_store():
 
 
 def retrieve(query, k=5):
-    model = SentenceTransformer("all-MiniLM-L6-v2")
+    model = get_model()
     client = chromadb.PersistentClient(path="./chroma_db")
     collection = client.get_collection("housing")
     query_embedding = model.encode(query).tolist()
@@ -42,7 +49,6 @@ def retrieve(query, k=5):
             "distance": results["distances"][0][i]
         })
     return chunks
-
 
 if __name__ == "__main__":
     embed_and_store()

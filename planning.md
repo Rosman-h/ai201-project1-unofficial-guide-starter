@@ -11,7 +11,6 @@ Off-campus housing experiences for Howard University students and DC renters.
 This knowledge is valuable because official Howard channels don't tell you
 which apartments have noise issues, broken AC, or predatory management —
 students have to find that out the hard way or from each other.
-Off-campus housing near Howard University is one of the most stressful parts of the college experience, but Howard's official channels offer almost no guidance on which specific apartments are worth it.This system makes that scattered student knowledge searchable in one place.
 
 ## Documents
 
